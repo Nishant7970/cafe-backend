@@ -45,7 +45,6 @@ const showUsers = async (req, res) => {
     res.status(400).json({ message: "Something went wrong" });
   }
 };
-
 const getUser = async (req, res) => {
   try {
     const id = req.params.id
@@ -65,11 +64,11 @@ const login = async (req, res) => {
       const isMatch = await bcrypt.compare(password, existingUser.password);
       if (isMatch) {
         const userObj = {
-          firstName: existingUser.firstName,
+          name: existingUser.name,
           email: existingUser.email,
           role: existingUser.role,
         };
-        const token = jwt.sign(userObj, SECRET, { expiresIn: "1h" });
+        const token = jwt.sign(userObj, SECRET, { expiresIn: "24h" });
         res.status(200).json({ ...userObj, token });
       } else {
         res.status(400).json({ message: "Invalid Password" });
@@ -84,11 +83,10 @@ const login = async (req, res) => {
 };
 const register = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const { name, email, password } = req.body;
     const hashedpwd = await bcrypt.hash(password, 10);
     const user = {
-      firstName,
-      lastName,
+      name,
       email,
       password: hashedpwd,
     };

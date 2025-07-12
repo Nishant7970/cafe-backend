@@ -1,15 +1,19 @@
 import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./Routes/userRoute.js";
+import productRouter from "./Routes/productRoute.js"
+import cors from "cors";
 // import dotenv from "dotenv";
 // dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 // const dbuser = encodeURIComponent(process.env.DBUSER);
 // const dbpass = encodeURIComponent(process.env.DBPASS);
 
 app.use("/api/users", userRouter);
+app.use("/api/product", productRouter);
 
 // mongoose.connect(`mongodb+srv://${dbuser}:${dbpass}@cluster0.5jgsi4d.mongodb.net/mern-cafe?retryWrites=true&w=majority&appName=Cluster0`).then(() => {
 //   app.listen(8080, () => {

@@ -4,7 +4,6 @@ const SECRET = "something";
 const authenticate = (req, res, next) => {
   try {
     let token = req.headers.authorization;
-    token = token.split(" ")[1];
     const user = jwt.verify(token, SECRET);
     req.role = user.role;
     next();

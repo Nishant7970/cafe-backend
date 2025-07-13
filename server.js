@@ -9,8 +9,10 @@ import cors from "cors";
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin:["http://localhost:3000", 'https://nishcafe.netlify.app']
+  origin: ['http://localhost:3000', 'https://nishcafe.netlify.app'],
+  credentials: true,
 }));
+
 // const dbuser = encodeURIComponent(process.env.DBUSER);
 // const dbpass = encodeURIComponent(process.env.DBPASS);
 

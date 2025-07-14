@@ -7,10 +7,7 @@ import cors from "cors";
 // dotenv.config();
 
 const app = express();
-app.use(cors({
-  origin: ['http://localhost:5173', 'https://nishcafe.netlify.app'],
-  credentials: true,
-}));
+app.use(cors());
 app.use(express.json());
 
 // const dbuser = encodeURIComponent(process.env.DBUSER);

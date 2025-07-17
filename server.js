@@ -7,7 +7,9 @@ import cors from "cors";
 // dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin:["http://localhost:5173"]
+}));
 app.use(express.json());
 
 // const dbuser = encodeURIComponent(process.env.DBUSER);
